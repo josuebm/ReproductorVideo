@@ -12,16 +12,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-
 
 public class Principal extends Activity {
 
-    ListView lv;
-    Cursor cursor;
-    ArrayList<Video> lista;
-    GestorVideo gv;
-    Adaptador ad;
+    private ListView lv;
+    private Cursor cursor;
+    private GestorVideo gv;
+    private Adaptador ad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +32,18 @@ public class Principal extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (cursor.moveToPosition(position)) {
                     Video v = GestorVideo.getRow(cursor);
-                    reproducir(v);
+                    reproductorDefecto(v);
                 }
+            }
+        });
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                if (cursor.moveToPosition(position)) {
+                    Video v = GestorVideo.getRow(cursor);
+                    reproductorPersonal(v);
+                }
+                return true;
             }
         });
     }
@@ -89,10 +96,17 @@ public class Principal extends Activity {
         lv.setAdapter(ad);
     }
 
-    public void reproducir(Video v) {
+    public void reproductorDefecto(Video v) {
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
         Uri data = Uri.parse(v.getRuta());
         intent.setDataAndType(data, v.getMime());
+        startActivity(intent);
+    }
+
+    public void reproductorPersonal(Video v) {
+        Intent intent = new Intent(this, Reproductor.class);
+        Uri data = Uri.parse(v.getRuta());
+        intent.putExtra("ruta", data);
         startActivity(intent);
     }
 }

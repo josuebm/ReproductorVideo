@@ -4,9 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.MediaStore;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Josué on 23/01/2015.
  */
@@ -43,20 +40,4 @@ public class GestorVideo {
         Cursor cursor = contexto.getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, columnas, null, null, orden);
         return cursor;
     }
-/*
-    public ArrayList<Video> select() {
-        ArrayList<Video> lista = new ArrayList();
-        Cursor cursor = getCursor();
-        Video video;
-        if (cursor.moveToFirst()) {
-            do {
-                try{
-                    video = getRow(cursor);
-                    lista.add(video);
-                }catch (Exception e){
-                }
-            } while (cursor.moveToNext());
-        }
-        return lista;
-    }*/
 }

@@ -5,13 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.ThumbnailUtils;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -87,11 +85,10 @@ public class Adaptador extends CursorAdapter{
 
     public Bitmap miniatura(Video v){
         int id = Integer.valueOf(v.getId());
-        ContentResolver crThumb = contexto.getContentResolver();
+        ContentResolver cr = contexto.getContentResolver();
         BitmapFactory.Options options=new BitmapFactory.Options();
         options.inSampleSize = 3;
-        Bitmap curThumb = MediaStore.Video.Thumbnails.getThumbnail(crThumb, id,
-                MediaStore.Video.Thumbnails.MICRO_KIND, options);
-        return curThumb;
+        Bitmap miniatura = MediaStore.Video.Thumbnails.getThumbnail(cr, id, MediaStore.Video.Thumbnails.MICRO_KIND, options);
+        return miniatura;
     }
 }
