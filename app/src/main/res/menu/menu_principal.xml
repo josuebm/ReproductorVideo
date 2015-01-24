@@ -1,0 +1,42 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.dam2.reproductorvideo.Principal">
+        <item android:id="@+id/action_ordenar"
+            android:title="@string/action_ordenar"
+            android:orderInCategory="100"
+            app:showAsAction="never" >
+            <menu>
+                <item android:id="@+id/orden_fecha_des"
+                    android:title="@string/orden_fecha"
+                    android:icon="@drawable/desc"
+                    android:orderInCategory="100"
+                    app:showAsAction="withText"/>
+                <item android:id="@+id/orden_fecha_asc"
+                    android:title="@string/orden_fecha"
+                    android:icon="@drawable/asc"
+                    android:orderInCategory="100"
+                    app:showAsAction="withText"/>
+                <item android:id="@+id/orden_nombre_des"
+                    android:title="@string/orden_nombre"
+                    android:icon="@drawable/desc"
+                    android:orderInCategory="100"
+                    app:showAsAction="withText"/>
+                <item android:id="@+id/orden_nombre_asc"
+                    android:title="@string/orden_nombre"
+                    android:icon="@drawable/asc"
+                    android:orderInCategory="100"
+                    app:showAsAction="withText"/>
+                <item android:id="@+id/orden_tamano_des"
+                    android:title="@string/orden_tamano"
+                    android:icon="@drawable/desc"
+                    android:orderInCategory="100"
+                    app:showAsAction="withText"/>
+                <item android:id="@+id/orden_tamano_asc"
+                    android:title="@string/orden_tamano"
+                    android:icon="@drawable/asc"
+                    android:orderInCategory="100"
+                    app:showAsAction="withText"/>
+            </menu>
+        </item>
+</menu>
